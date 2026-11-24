@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: mms-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: messages
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/messages_db.sql:/docker-entrypoint-initdb.d/messages_db.sql
